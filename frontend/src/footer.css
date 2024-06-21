@@ -1,0 +1,22 @@
+.footer {
+    border-top: 2px solid rgba(248, 250, 252, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: rgba(248, 250, 252, 0.5);
+
+    .right {
+        margin-left: auto;
+    }
+}
+
+.status {
+    color: rgb(248, 250, 252);
+    font-weight: 400;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    gap: 10px;
+}
