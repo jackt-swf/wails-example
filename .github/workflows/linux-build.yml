@@ -13,7 +13,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
       - name: Install Wails
-        run: go install github.com/wailsapp/wails/v2/cmd/wails@${{inputs.wails-version}}
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
         shell: bash
       - name: Install Wails dependencies'
         run: sudo apt-get update && sudo apt-get install libgtk-3-0 libwebkit2gtk-4.0-dev gcc-aarch64-linux-gnu
