@@ -1,0 +1,34 @@
+name: "Wails Build (Linux)"
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup GoLang
+        uses: actions/setup-go@v4
+      - run: go version
+        shell: bash
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+      - name: Install Wails
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@${{inputs.wails-version}}
+        shell: bash
+      - name: Install Wails dependencies'
+        run: sudo apt-get update && sudo apt-get install libgtk-3-0 libwebkit2gtk-4.0-dev gcc-aarch64-linux-gnu
+        shell: bash
+      - name: Build App
+        working-directory: .
+        run: wails build --platform linux/amd64 -webview2 download -tags webkit2_41 -o PangaeAPI
+        shell: bash
+      - name: Add Linux permissions
+        working-directory: .
+        run: chmod +x build/bin/*
+        shell: bash
+      - uses: actions/upload-artifact@v3
+        with:
+          name: wails-linux-build
+          path: |
+            */bin/
+            *\bin\*
