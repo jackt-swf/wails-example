@@ -2,7 +2,8 @@ name: "Wails Build (Linux)"
 on: workflow_dispatch
 
 jobs:
-  build:
+  build-ubuntu-22_04:
+    name: build on Ubuntu 22.04
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -35,3 +36,38 @@ jobs:
           path: |
             */bin/
             *\bin\*
+  build-ubuntu-20_04:
+    name: build on Ubuntu 20.04
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup GoLang
+        uses: actions/setup-go@v4
+        with:
+          check-latest: true
+          go-version: ^1.18
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Install Wails
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
+        shell: bash
+      - name: Install Wails dependencies
+        run: sudo apt-get update && sudo apt-get install libgtk-3-0 libwebkit2gtk-4.0-dev gcc-aarch64-linux-gnu
+        shell: bash
+      - name: Build App
+        working-directory: .
+        run: wails build --platform linux/amd64 -webview2 download -o PangaeAPI
+        shell: bash
+      - name: Add Linux permissions
+        working-directory: .
+        run: chmod +x build/bin/*
+        shell: bash
+      - uses: actions/upload-artifact@v3
+        with:
+          name: wails-linux-build
+          path: |
+            */bin/
+            *\bin\*
+
