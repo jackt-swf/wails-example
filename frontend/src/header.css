@@ -13,22 +13,6 @@
     }
 }
 
-.button {
-    height: min-content;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: all .1s;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    background-color: rgb(18, 170, 18);
-
-    .icon {
-        font-size: 20px;
-    }
-}
-
 .button:hover {
     cursor: pointer;
     background-color: rgba(18, 170, 18, 0.6);

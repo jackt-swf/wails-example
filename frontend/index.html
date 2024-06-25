@@ -24,7 +24,7 @@
                 </div>
                 <div class="item">
                     <i class="icon bi bi-question-circle"></i>
-                    <div class="text">Troublshooting</div>
+                    <div class="text">Troubleshooting</div>
                 </div>
                 <div class="item bottom">
                     <i class="icon bi bi-gear"></i>
@@ -34,14 +34,20 @@
             <div class="main">
                 <table class="computer-info">
                 </table>
+                <input id="tenant-url" placeholder="Tenant URL..." value="https://tenant1.swis-dev-aks.swfplatform.io/">
+                <input id="user-email" placeholder="Email...">
+                <div class="button" id="save-btn">
+                    <i class="icon bi bi-floppy"></i>
+                    <div class="text">Save</div>
+                </div>
             </div>
         </div>
         <div class="footer">
             <div class="status">
-                <i class="icon bi bi-unlock"></i>
+                <i id="status-icon" class="icon bi bi-unlock"></i>
                 <div>PangaeAPI</div>
             </div>
-            <div>unauthenticated</div>
+            <div id="status">unauthenticated</div>
             <div class="right">SOFTwarfare, LLC | Zero Trust Identity®</div>
         </div>
     </div>
