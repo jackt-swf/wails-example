@@ -23,7 +23,7 @@ jobs:
         shell: bash
       - name: Build App
         working-directory: .
-        run: wails build --platform linux/amd64 -webview2 download -tags webkit2_41 -o PangaeAPI
+        run: wails build --platform linux/amd64 -webview2 download -o PangaeAPI
         shell: bash
       - name: Add Linux permissions
         working-directory: .
